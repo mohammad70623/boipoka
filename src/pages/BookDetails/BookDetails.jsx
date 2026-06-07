@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLoaderData, useParams } from 'react-router';
-
+import { addToStoredDB } from '../../utility/addToDB';
 const BookDetails = () => {
     const {id}=useParams();
     const bookId = parseInt(id);
@@ -8,6 +8,12 @@ const BookDetails = () => {
     const singleBook = data.find(book => book.bookId === bookId);
     
     const {bookName, image,rating,tags, author, category,publisher,review, totalPages, yearOfPublishing} = singleBook;
+
+
+    const handleMarkAsRead = id =>{
+
+        addToStoredDB(id)
+    }
 
     return (
         <div className='max-w-6xl mx-auto my-10 p-6 border border-gray-200 flex flex-col md:flex-row gap-8 items-start'>
@@ -61,11 +67,11 @@ const BookDetails = () => {
                 </div>
 
             <div className="flex gap-4 mt-auto">
-                    <button className="px-6 py-2.5 border border-gray-300 rounded-lg font-bold text-sm bg-white hover:bg-gray-50 text-gray-900 transition-colors">
-                        Read
+                    <button onClick={()=>handleMarkAsRead(id)} className="px-6 py-2.5 border border-gray-300 rounded-lg font-bold text-sm bg-white hover:bg-gray-50 text-gray-900 transition-colors">
+                        Mark as Read
                     </button>
                     <button className="px-6 py-2.5 bg-[#50B1C9] hover:bg-[#409eb5] text-white rounded-lg font-bold text-sm transition-colors">
-                        Wishlist
+                        Add to Wishlist
                     </button>
                 </div>
             </div>
