@@ -7,7 +7,7 @@ const Book = ({singleBook}) => {
     console.log(singleBook)
     const {bookName, author,bookId, image, rating,category, tags, yearOfPublishing, publisher} = singleBook;
     return (
- <Link to={`/bookDetails/${bookId}`}>
+ <Link to={`/bookDetails/${bookId }`}>
        <div className="card bg-base-100 w-96 shadow-sm border shadow">
   <figure className='p-5 bg-gray-100 w-2/3 mx-auto mt-6'>
     <img className='h-[166px]'
